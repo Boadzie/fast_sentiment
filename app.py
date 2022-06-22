@@ -26,11 +26,10 @@ async def get_sentiment(input: TextInput):
         sentiment = "Negative"
     else:
         sentiment = "Neutral"
-    return {
-        "result": f"The sentiment of the text is: {sentiment} and the confident score is {round(result['compound'], 2)*100}%"
-    }
+    # the composite score is the proportion of text in each category between -1(extreme negative) and 1(extreme positive)
+    return {"result": f"The sentiment of the text is {sentiment}!"}
 
 
 # run the API
 if __name__ == "__main__":
-    uvicorn.run(api, host="0.0.0.0", port=8080)
+    uvicorn.run(api, host="0.0.0.0", port=8000)
